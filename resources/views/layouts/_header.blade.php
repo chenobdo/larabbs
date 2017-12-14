@@ -36,7 +36,7 @@
                                aria-expanded="false">
                             <span class="user-avatar pull-left"
                                   style="margin-right:8px; margin-top:-5px;">
-                                <img src="https://fsdhubcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60"
+                                <img src="{{ Auth::user()->avatar }}"
                                      class="img-responsive img-circle"
                                      width="30px" height="30px">
                             </span>
