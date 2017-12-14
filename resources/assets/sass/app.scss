@@ -1,13 +1,12 @@
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 /* universal */
 
 body {
-  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial,sans-serif;
+  font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
 
 /* header */
@@ -23,35 +22,36 @@ body {
 
 /* Sticky footer styles */
 html {
-    position: relative;
-    min-height: 100% ;
+  position: relative;
+  min-height: 100%;
 }
+
 body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100% ;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    background-color: #000;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #000;
 
-    .container {
-        padding-right: 15px;
-        padding-left: 15px;
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
 
-        p {
-            margin: 19px 0;
-            color: #c1c1c1;
+    p {
+      margin: 19px 0;
+      color: #c1c1c1;
 
-            a {
-                color: inherit;
-            }
-        }
+      a {
+        color: inherit;
+      }
     }
+  }
 }
 
 /* User register page */
@@ -60,5 +60,14 @@ body {
     margin-bottom: 0px;
     margin-top: 10px;
     cursor: pointer;
+  }
+}
+
+/* User profile page */
+.users-show-page {
+  .user-info {
+    .thumbnail {
+      margin-bottom: 0px;
+    }
   }
 }
