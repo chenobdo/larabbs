@@ -18,8 +18,7 @@ class ImageUploadHandler
 
         // TODO
 //        $upload_path = public_path() . '/' . $folder_name;
-        $upload_path = storage_path('public') . '/' . $folder_name;
-        dd($upload_path);
+        $upload_path = storage_path('app/public') . '/' . $folder_name;
 
         // 获取文件的后缀名，因图片从剪贴板里黏贴时后缀名为空，所以此处确保后缀一直存在
         $extension = strtolower($file->getClientOriginalExtension()) ?: 'png';
