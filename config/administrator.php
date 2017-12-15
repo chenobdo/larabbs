@@ -80,7 +80,7 @@ return array(
      *
      * @type string
      */
-    'logout_path' => false,
+//    'logout_path' => false,
 
     // 允许在登录成功后使用 Session::get('redirect') 将用户重定向到原本想要访问的后台页面
     'login_redirect_key' => 'redirect',
@@ -91,5 +91,5 @@ return array(
     // 可选的语言，如果不为空，将会在页面顶部显示『选择语言』按钮
     'locales' => [],
 
-    'custom_routes_file' => app_path('Http/routes/administrator.php'),
+//    'custom_routes_file' => app_path('Http/routes/administrator.php'),
 );
