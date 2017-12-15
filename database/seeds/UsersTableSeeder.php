@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use Permission;
 
 class UsersTableSeeder extends Seeder
 {
