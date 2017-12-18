@@ -1150,6 +1150,7 @@ class ComposerStaticInit1b4466c9c317525a82610d92f0c513b6
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'FollowersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/FollowersTableSeeder.php',
         'Frozennode\\Administrator\\Actions\\Action' => __DIR__ . '/..' . '/summerblue/administrator/src/Frozennode/Administrator/Actions/Action.php',
         'Frozennode\\Administrator\\Actions\\Factory' => __DIR__ . '/..' . '/summerblue/administrator/src/Frozennode/Administrator/Actions/Factory.php',
         'Frozennode\\Administrator\\AdminController' => __DIR__ . '/..' . '/summerblue/administrator/src/controllers/AdminController.php',

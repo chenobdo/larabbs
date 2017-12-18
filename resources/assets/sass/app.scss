@@ -1,16 +1,15 @@
 // Variables
 @import "variables";
+
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 /* universal */
-
 body {
   font-family: Hiragino Sans GB, "Hiragino Sans GB", Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
 
 /* header */
-
 .navbar-static-top {
   border-color: #e7e7e7;
   background-color: #fff;
@@ -150,7 +149,6 @@ body {
 }
 
 /* Topic Show Page */
-
 @import "topic_body";
 
 .topics-show-page {
@@ -212,5 +210,31 @@ body {
       line-height: 26px;
       font-size: 0.9em;
     }
+  }
+}
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    text-align: center;
+    width: 33%;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: #337ab7;
+    }
+  }
+  strong {
+    display: block;
+    font-size: 1.2em;
+    color: black;
   }
 }

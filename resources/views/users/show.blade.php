@@ -15,6 +15,14 @@
                         </div>
                         <div class="media-body">
                             <hr>
+                            @if (Auth::check())
+                                @include('users._follow_form')
+                            @endif
+                            <hr>
+                            <p class="stats">
+                                @include('users._stats', ['user' => Auth::user()])
+                            </p>
+                            <hr>
                             <h4><strong>个人简介</strong></h4>
                             <p>{{ $user->introduction }}</p>
                             <hr>

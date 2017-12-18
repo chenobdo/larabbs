@@ -715,6 +715,7 @@ return array(
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
     'File_Iterator_Factory' => $vendorDir . '/phpunit/php-file-iterator/src/Factory.php',
+    'FollowersTableSeeder' => $baseDir . '/database/seeds/FollowersTableSeeder.php',
     'Frozennode\\Administrator\\Actions\\Action' => $vendorDir . '/summerblue/administrator/src/Frozennode/Administrator/Actions/Action.php',
     'Frozennode\\Administrator\\Actions\\Factory' => $vendorDir . '/summerblue/administrator/src/Frozennode/Administrator/Actions/Factory.php',
     'Frozennode\\Administrator\\AdminController' => $vendorDir . '/summerblue/administrator/src/controllers/AdminController.php',
