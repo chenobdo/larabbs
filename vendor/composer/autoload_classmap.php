@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Commands\\CalculateActiveUser' => $baseDir . '/app/Console/Commands/CalculateActiveUser.php',
+    'App\\Console\\Commands\\SyncUserActivedAt' => $baseDir . '/app/Console/Commands/SyncUserActivedAt.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Handlers\\ImageUploadHandler' => $baseDir . '/app/Handlers/ImageUploadHandler.php',

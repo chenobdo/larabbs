@@ -442,6 +442,7 @@ class ComposerStaticInit1b4466c9c317525a82610d92f0c513b6
 
     public static $classMap = array (
         'App\\Console\\Commands\\CalculateActiveUser' => __DIR__ . '/../..' . '/app/Console/Commands/CalculateActiveUser.php',
+        'App\\Console\\Commands\\SyncUserActivedAt' => __DIR__ . '/../..' . '/app/Console/Commands/SyncUserActivedAt.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Handlers\\ImageUploadHandler' => __DIR__ . '/../..' . '/app/Handlers/ImageUploadHandler.php',
