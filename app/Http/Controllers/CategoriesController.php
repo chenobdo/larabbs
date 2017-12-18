@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Topic;
 use App\Models\User;
+use App\Models\Link;
 
 class CategoriesController extends Controller
 {
