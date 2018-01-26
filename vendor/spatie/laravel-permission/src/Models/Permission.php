@@ -2,6 +2,7 @@
 
 namespace Spatie\Permission\Models;
 
+use Spatie\Permission\Guard;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\PermissionRegistrar;
@@ -29,7 +30,7 @@ class Permission extends Model implements PermissionContract
 
     public static function create(array $attributes = [])
     {
-        $attributes['guard_name'] = $attributes['guard_name'] ?? config('auth.defaults.guard');
+        $attributes['guard_name'] = $attributes['guard_name'] ?? Guard::getDefaultName(static::class);
 
         if (static::getPermissions()->where('name', $attributes['name'])->where('guard_name', $attributes['guard_name'])->first()) {
             throw PermissionAlreadyExists::create($attributes['name'], $attributes['guard_name']);
@@ -79,12 +80,33 @@ class Permission extends Model implements PermissionContract
      */
     public static function findByName(string $name, $guardName = null): PermissionContract
     {
-        $guardName = $guardName ?? config('auth.defaults.guard');
+        $guardName = $guardName ?? Guard::getDefaultName(static::class);
 
         $permission = static::getPermissions()->where('name', $name)->where('guard_name', $guardName)->first();
 
         if (! $permission) {
             throw PermissionDoesNotExist::create($name, $guardName);
+        }
+
+        return $permission;
+    }
+
+    /**
+     * Find or create permission by its name (and optionally guardName).
+     *
+     * @param string $name
+     * @param string|null $guardName
+     *
+     * @return \Spatie\Permission\Contracts\Permission
+     */
+    public static function findOrCreate(string $name, $guardName = null): PermissionContract
+    {
+        $guardName = $guardName ?? Guard::getDefaultName(static::class);
+
+        $permission = static::getPermissions()->where('name', $name)->where('guard_name', $guardName)->first();
+
+        if (! $permission) {
+            return static::create(['name' => $name, 'guard_name' => $guardName]);
         }
 
         return $permission;

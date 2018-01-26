@@ -21,9 +21,17 @@ class TopicsController extends Controller
 
     public function index(Request $request, Topic $topic, User $user, Link $link)
     {
+//	echo xdebug_time_index(), "\n";
+	xdebug_start_trace('trace');
+
         $topics = $topic->withOrder($request->order)->paginate(20);
         $active_users = $user->getActiveUsers();
         $links = $link->getAllCached();
+
+//	var_dump(xdebug_get_headers());
+//	echo xdebug_time_index(), "\n";
+	xdebug_stop_trace(); 
+//	exit;
 
         return view('topics.index', compact('topics', 'active_users', 'links'));
     }

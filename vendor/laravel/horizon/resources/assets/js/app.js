@@ -58,10 +58,10 @@ Vue.mixin({
          * Convert to human readable timestamp.
          */
         displayableTagsList(tags){
-            if (!tags.length) return '';
+            if (!tags || !tags.length) return '';
 
             return _.reduce(tags, (s, n)=> {
-                return (s ? ', ' : '') + _.truncate(n);
+                return (s ? s + ', ' : '') + _.truncate(n);
             }, '');
         }
     }

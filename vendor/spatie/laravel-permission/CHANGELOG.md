@@ -2,6 +2,28 @@
 
 All notable changes to `laravel-permission` will be documented in this file
 
+## 2.8.0 - 2018-01-25
+- Support getting guard_name from extended model when using static methods
+
+## 2.7.9 - 2018-01-23
+Changes related to throwing UnauthorizedException:
+ - When UnauthorizedException is thrown, a property is added with the expected role/permission which triggered it
+ - A configuration option may be set to include the list of required roles/permissions in the message
+
+## 2.7.8 - 2018-01-02
+- REVERTED: Dynamic permission_id and role_id columns according to tables name 
+NOTE: This Dynamic field naming was a breaking change, so we've removed it for now. 
+
+BEST NOT TO USE v2.7.7 if you've changed tablenames in the config file.
+
+## 2.7.7 - 2017-12-31
+- updated `HasPermissions::getStoredPermission` to allow a collection to be returned, and to fix query when passing multiple permissions
+- Give and revoke multiple permissions 
+- Dynamic permission_id and role_id columns according to tables name 
+- Add findOrCreate function to Permission model 
+- Improved Lumen support
+- Allow guard name to be null for find role by id 
+
 ## 2.7.6 - 2017-11-27
 - added Lumen support
 - updated `HasRole::assignRole` and `HasRole::syncRoles` to accept role id's in addition to role names as arguments

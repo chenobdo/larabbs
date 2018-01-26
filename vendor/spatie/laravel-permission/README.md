@@ -1,5 +1,16 @@
 # Associate users with permissions and roles
 
+
+### Sponsor
+
+<table>
+   <tr>
+      <td><img src="http://spatie.github.io/laravel-permission/sponsor-logo.png"></td>
+      <td>If you want to quickly add authentication and authorization to Laravel projects, feel free to check Auth0's Laravel SDK and free plan at <a href="https://auth0.com/overview?utm_source=GHsponsor&utm_medium=GHsponsor&utm_campaign=laravel-permission&utm_content=auth">https://auth0.com/overview</a>.</td>Laravelddd
+   </tr>
+</table>
+
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-permission.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-permission)
 [![Build Status](https://img.shields.io/travis/spatie/laravel-permission/master.svg?style=flat-square)](https://travis-ci.org/spatie/laravel-permission)
 [![StyleCI](https://styleci.io/repos/42480275/shield)](https://styleci.io/repos/42480275)
@@ -71,6 +82,13 @@ You can publish [the migration](https://github.com/spatie/laravel-permission/blo
 
 ```bash
 php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
+```
+
+If you're using UUIDs or GUIDs for your `User` models you can update the `create_permission_tables.php` migration and replace `$table->morphs('model')` with:
+
+```php
+$table->uuid('model_id');
+$table->string('model_type');
 ```
 
 After the migration has been published you can create the role- and permission-tables by running the migrations:
@@ -165,6 +183,14 @@ return [
      */
 
     'cache_expiration_time' => 60 * 24,
+    
+    /*
+     * When set to true, the required permission/role names are added to the exception
+     * message. This could be considered an information leak in some contexts, so
+     * the default setting is false here for optimum safety.
+     */
+
+    'display_permission_in_exception' => false,
 ];
 ```
 
@@ -176,19 +202,40 @@ You can install the package via Composer:
 composer require spatie/laravel-permission
 ```
 
-Copy `vendor/spatie/laravel-permission/config/permission.php` to `config/permission.php`. Same for `vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub` to `database/migrations/create_permission_tables.php` (be sure to remove the ".stub" at the end of the file name).
+Copy the required files:
 
-In `bootstrap/app.php`, add the following code below other services providers:
-
-```php
-$app->register(Spatie\Permission\PermissionServiceProvider::class);
-$app->configure('permission');
+```bash
+cp vendor/spatie/laravel-permission/config/permission.php config/permission.php
+cp vendor/spatie/laravel-permission/database/migrations/create_permission_tables.php.stub database/migrations/2018_01_01_000000_create_permission_tables.php
 ```
 
-Then, run your migrations:
+You will also need to create another configuration file at `config/auth.php`. Get it on the Laravel repository or just run the following command:
+
+```bash
+curl -Ls https://raw.githubusercontent.com/laravel/lumen-framework/5.5/config/auth.php -o config/auth.php
+```
+
+Now, run your migrations:
 
 ```bash
 php artisan migrate
+```
+
+Then, in `bootstrap/app.php`, register the middlewares:
+
+```php
+$app->routeMiddleware([
+    'auth'       => App\Http\Middleware\Authenticate::class,
+    'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
+    'role'       => Spatie\Permission\Middlewares\RoleMiddleware::class,
+]);
+```
+
+As well as the configuration and the service provider:
+
+```php
+$app->configure('permission');
+$app->register(Spatie\Permission\PermissionServiceProvider::class);
 ```
 
 ## Usage
@@ -601,7 +648,7 @@ php artisan permission:create-role writer
 ```
 
 ```bash
-php artisan permission:create-permission 'edit articles'
+php artisan permission:create-permission "edit articles"
 ```
 
 When creating permissions and roles for specific guards you can specify the guard names as a second argument:
@@ -611,7 +658,7 @@ php artisan permission:create-role writer web
 ```
 
 ```bash
-php artisan permission:create-permission 'edit articles' web
+php artisan permission:create-permission "edit articles" web
 ```
 
 ## Unit Testing
@@ -682,7 +729,6 @@ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvid
 ```
   
   And update the `models.role` and `models.permission` values
-
 
 ## Cache
 
